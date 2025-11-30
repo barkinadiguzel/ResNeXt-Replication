@@ -1,4 +1,3 @@
-# File: blocks/resnext_block.py
 import torch
 import torch.nn as nn
 from layers.conv_layer import ConvLayer
@@ -30,7 +29,6 @@ class ResNeXtBottleneck(nn.Module):
         # Shortcut: identity or projection when shape changes
         self.downsample = None
         if stride != 1 or in_channels != out_channels:
-            # Projection shortcut (type B in He et al.'s implementation)
             self.downsample = nn.Sequential(
                 nn.Conv2d(in_channels, out_channels, kernel_size=1, stride=stride, bias=False),
                 nn.BatchNorm2d(out_channels),
